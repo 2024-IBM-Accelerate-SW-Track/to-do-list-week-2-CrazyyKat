@@ -7,10 +7,11 @@ class AddTodo extends Component {
     super();
     this.state = {
       content: "",
+      date:"",
     };
-    this.state = {
-      date: "",
-    };
+    // this.state = {
+    //   date: "",
+    // };
   }
   // The handleChange function updates the react state with the new input value provided from the user.
   // "event" is the defined action a user takes. In this case, the event is triggered when the user types something

@@ -29,9 +29,11 @@ const Todos = ({ todos, deleteTodo }) => {
                 {/* <Checkbox style={{paddingLeft:0}} color={primary}/> */}
                 
                 {/* added an onClick eventListener */}
-                <Checkbox onClick={() => this.deleteTodo(this.id)} style={{paddingLeft:0}} color={{primary:'lightblue'}}/>
+
+                <Checkbox onClick={()=>deleteTodo(todo.id)} style={{paddingLeft:0}} />
 
                 <ListItemText primary={todo.content} secondary={todo.date}/>
+               
             </ListItemButton>
 
           </Card>

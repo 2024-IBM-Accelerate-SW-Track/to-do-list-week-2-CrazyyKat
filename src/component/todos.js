@@ -1,7 +1,9 @@
 import React from "react";
 import "../component/todos.css";
-import "../pages/Home.js"
+import "../pages/Home.js";
 import { Card, CardContent, Grid, ListItemButton, ListItemText, Checkbox } from "@mui/material";
+
+
 
 // 1. This component formats and returns the list of todos.
 // 2. Treat the question mark like an if statement.
@@ -10,7 +12,7 @@ import { Card, CardContent, Grid, ListItemButton, ListItemText, Checkbox } from 
 // 3. The map function is called to assign each array item with a key
 // 4. Think of lines 14-23 as a loop. For each todo in the todo list, we want to give the list item
 // a key, and it's own card shown in the UI
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({ todos, deleteTodo}) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
       return (
@@ -30,7 +32,9 @@ const Todos = ({ todos, deleteTodo }) => {
                 
                 {/* added an onClick eventListener */}
 
-                <Checkbox onClick={()=>deleteTodo(todo.id)} style={{paddingLeft:0}} />
+                {/* Don't need to do this.deleteTodo since its a global function and can
+                just do todo.id since we are referencing the todo that got passed in */}
+                <Checkbox onClick={()=>{deleteTodo(todo.id)}} style={{paddingLeft:0}} color="primary" />
 
                 <ListItemText primary={todo.content} secondary={todo.date}/>
                

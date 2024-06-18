@@ -11,15 +11,6 @@ class Home extends Component {
       todos: [],
     };
   }
-  // deleteToDo function using a filter method
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter((todo) => {
-      return todo.id !== id;
-    });
-    this.setState({
-      todos: todos,
-    });
-  };
 
 
 
@@ -34,7 +25,7 @@ class Home extends Component {
     todo.id = Math.random();
     // Create a array that contains the current array and the new todo item
     
-    const exists = this.state.todos.find((t) => t.id === todo.id)
+    const exists = this.state.todos.find((t) => t.content === todo.content)
 
     if (exists) {
       return
@@ -46,6 +37,20 @@ class Home extends Component {
       todos: new_list,
     });
   };
+
+
+  // deleteToDo function using a filter method
+  deleteTodo = (id) => {
+    const todos = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    this.setState({
+      todos: todos,
+    });
+  };
+
+
+
   render() {
     return (
       <div className="Home">
@@ -55,7 +60,12 @@ class Home extends Component {
         <AddTodo addTodo={this.addTodo} />
         {/* When returning the Todos component, todos is a prop passed to the todos.js file
          to format and render the current todo list state */}
-        <Todos todos={this.state.todos} deleteTodo={this.state.deleteTodo} />
+
+         {/* ERROR FOUND: use this.deleteTodo and NOT this.state.deleteTodo 
+         We only use state for static variables/variable values you want at a certain time
+         NOT functions
+         */}
+        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
